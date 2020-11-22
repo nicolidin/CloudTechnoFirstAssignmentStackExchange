@@ -1,10 +1,15 @@
+LIDIN Nicolas
+github repository: https://github.com/nicolidin/CloudTechnoFirstAssignmentStackExchange
+
 # CloudTechoDataAnalysisHiveDCU
 
 ## 1. Acquire the top 200,000 posts by viewcount (see notes on Data Acquisition)
 
-The aim of this part 1 is to retrieve 4 csv of 50 000 rows each to finally get the top 200 000 posts represented by rows.
+To do the queries we use "data.stackexchange.com/stackoverflow"
 
-We firstly start to get 50 000 rows above with a magic number in our query. 
+As we can't get 200 000 rows in one query the aim of this part 1 is to get 4 csv of 50 000 rows each to finally have the top 200 000 posts. 
+
+We firstly start to get the top 50 000 rows using a magic number in our first query. 
 
 ![QueryResultsSupTo111930](./cloudScreen/QueryResultsSupTo111930.png)
 
@@ -28,7 +33,7 @@ The second and third parts are made with Kotlin language in the same script. Ind
 
 Firstly, before executing the script with Kotlin, I implemented a script written in R to remove the body column that is not perfectly formatted. Then, it will be simpler to use these csv with Hive and/or Pig:
 
-Indeed you can see below that we have the four files with an R  script (removeBodyColumnFromCsv).
+Indeed we can see below that we have the four files with an R  script (removeBodyColumnFromCsv).
 
 ![csvBeforeEdited](./cloudScreen/csvBeforeEdited.png)
 
@@ -38,9 +43,9 @@ Below we can see that this script simply removes a column from a csv file.
 
 After edited the csv, we have to add these files into an Hadoop Distributed File System (HDFS) that will store these files on the servers inside our Cluster (created with Google Cloud Platform).
 
-Then, we push these files into HDFS  to after be able to use Pig and/or Hive (MapReduce) to load data as applicable.
+We push these files into HDFS  to after be able to use Pig and/or Hive (MapReduce) to load data as applicable.
 
-On the screen below we can see that we create a folder through HDFS, then adding the four csv files to finally print them with the ls command.
+On the screen below we can see that we create a folder through HDFS, then we add the four csv files to finally print them with the ls command.
 
 ![CommandToPutOnHdfsFolder](./cloudScreen/CommandToPutOnHdfsFolder.png)
 
@@ -64,11 +69,15 @@ For this third part, I still use Hive (based on MapReduce) to do all the queries
 
 ![3.1log](./cloudScreen/3.1log.png)
 
+These two screens show the query to get the top 10 posts by score and the log of the Title and Score column.
+
 ### II. The top 10 users by post score
 
 ![3.2](./cloudScreen/3.2.png)
 
 ![3.2log](./cloudScreen/3.2log.png)
+
+These two screens show the query to get the top 10 users by post score and the log of the OwnerUserId and TotalScore column.
 
 ### III. The number of distinct users, who used the word “Hadoop” in one of their posts
 
@@ -76,11 +85,17 @@ For this third part, I still use Hive (based on MapReduce) to do all the queries
 
 ![3.3log](./cloudScreen/3.3log.png)
 
+These two screens show the query to get the number of distinct users who use the world "hadoop" in one of their post and the log of the number.
 
 
-Below we have all the log when executing our Kotlin script. (task 2 and task 3) by doing these two command lines:
+
+If you want to run the program to do the task 2 and 3
+
+run these two command lines:
 `./gradlew build`
 
 `java -jar build/libs/shadow-1.0-SNAPSHOT-all.jar`
 
 ![allLogResult](./cloudScreen/allLogResult.png)
+
+Above we have all the log when executing our Kotlin script. (task 2 and task 3) by doing 
