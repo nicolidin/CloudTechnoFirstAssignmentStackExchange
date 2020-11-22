@@ -2,9 +2,9 @@
 
 ## 1. Acquire the top 200,000 posts by viewcount (see notes on Data Acquisition)
 
-The aim of this part 1 is to retrieve 4 csv of 50 000 rows each.
+The aim of this part 1 is to retrieve 4 csv of 50 000 rows each to finally get the top 200 000 posts represented by rows.
 
-We firtly start to get 50 000 row above a magic number. 
+We firtly start to get 50 000 row above with a magic number in our query. 
 
 ![QueryResultsSupTo111930](./cloudScreen/QueryResultsSupTo111930.png)
 
@@ -16,7 +16,7 @@ After that we do 3 other time a request that get 50 000 rows inferior of the las
 
 ![QueryResultsSupTo36590](./cloudScreen/QueryResultsSupTo36590.png)
 
-
+We have finally 4 csv with each 50 000 posts rows 
 
 ![csvBeforeEdited](./cloudScreen/csvBeforeEdited.png)
 
@@ -76,6 +76,9 @@ For this third part I still use Hive (based on MapReduce) to do all the query th
 
 
 
-Below we have all the log when executing our Kotlin script. (task 2 and task 3)
+Below we have all the log when executing our Kotlin script. (task 2 and task 3) by doing these two command lines:
+`./gradlew build`
+
+`java -jar build/libs/shadow-1.0-SNAPSHOT-all.jar`
 
 ![allLogResult](./cloudScreen/allLogResult.png)
